@@ -1,0 +1,132 @@
+---
+title: "Figure 1"
+---
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+
+Figure1 <- read.csv("NaOH_KHP.csv")
+Figure2 <- read.csv("NaOH_HCl.csv")
+Figure3 <- read.csv("NaOH_HC2H3O2.csv")
+Figure4 <- read.csv("NaOH_H3PO4.csv")
+Figure5 <- read.csv("HCl_NH3.csv")
+```
+
+```{r}
+Figure1
+```
+
+```{r}
+Figure2
+```
+
+```{r}
+Figure3
+```
+
+```{r}
+Figure4
+```
+
+```{r}
+Figure5
+```
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+Figure1 |>
+    ggplot(mapping = aes(x = NaOH_added_.mL., y = pH)) +
+    geom_point() +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 21.4 & pH == 7.02, "Equivalence Point -->", "")), 
+            vjust = 0.5, hjust = 1) +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 11.3 & pH == 5.01, "pKa -->", "")), 
+            vjust = 0.4, hjust = 1) +
+  
+    labs(y = "pH", 
+         x = "NaOH added (mL)",
+         title = "Figure 1",)
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+Figure2 |>
+    ggplot(mapping = aes(x = NaOH.Added..mL., y = pH)) +
+    geom_point() +
+    geom_text(aes(label = ifelse(NaOH.Added..mL. == 15.3 & pH == 7.06, "Equivalence Point: -->", "")), 
+            vjust = 0.5, hjust = 1) +
+    geom_text(aes(label = ifelse(NaOH.Added..mL. == 7.7 & pH == 1.72, "pKa -->", "")), 
+            vjust = 0.4, hjust = 1) +
+  
+    labs(y = "pH", 
+         x = "NaOH added (mL)",
+         title = "Figure 2",)
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+Figure3 |>
+    ggplot(mapping = aes(x = NaOH_added_.mL., y = pH)) +
+    geom_point() +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 16.49 & pH == 7.34, "Equivalence Point 1 -->", "")), 
+            vjust = 0.5, hjust = 1) +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 9.1 & pH == 4.78, "pKa -->", "")), 
+            vjust = 0.4, hjust = 1) +
+
+  
+    labs(y = "pH", 
+         x = "NaOH added (mL)",
+         title = "Figure 3",)
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+Figure4 |>
+    ggplot(mapping = aes(x = NaOH_added_.mL., y = pH)) +
+    geom_point() +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 28.05 & pH == 5.05, "Equivalence Point 1 -->", "")), 
+            vjust = 0.5, hjust = 1) +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 14.05 & pH == 1.95, "pKa 1 -->", "")), 
+            vjust = 0.4, hjust = 1) +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 46.3 & pH == 9.56, "Equivalence Point 2 -->", "")), 
+            vjust = 0.5, hjust = 1) +  # Add label at the specific point
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 36.9 & pH == 6.95, "pKa 2 -->", "")), 
+            vjust = 0.4, hjust = 1) +  # Add label at the specific point  
+  
+    labs(y = "pH", 
+         x = "NaOH added (mL)",
+         title = "Figure 4",)
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+Figure5 |>
+    ggplot(mapping = aes(x = NaOH_added_.mL., y = pH)) +
+    geom_point() +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 11.5 & pH == 4.7, "Equivalence Point 1 -->", "")), 
+            vjust = 0.5, hjust = 1) +
+    geom_text(aes(label = ifelse(NaOH_added_.mL. == 5.5 & pH == 9.42, "pKa 1 -->", "")), 
+            vjust = 0.4, hjust = 1) +
+
+  
+    labs(y = "pH", 
+         x = "HCl added (mL)",
+         title = "Figure 5",)
+```
+
